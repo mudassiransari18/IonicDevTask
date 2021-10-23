@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "DevTestTask",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
