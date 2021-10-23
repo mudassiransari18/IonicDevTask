@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { StorageService } from '../storage.service';
+import { Page1Component } from './components/page1/page1.component'
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private route: Router, private storageService: StorageService) {}
+
+  jsonData = this.storageService.jsonData;
+
+  onPageSelect(data) {
+    this.route.navigate([`home/${data.pageid}`]);
+  }
 
 }

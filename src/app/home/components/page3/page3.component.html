@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <h1>Page 3</h1>
+  <form #formData='ngForm' [formGroup]="myFormGroup">
+    <ion-item *ngFor="let form_elem of form_template">
+      <ion-item [ngSwitch]="form_elem.type">
+        <ion-item *ngSwitchCase="'label'">
+          <ion-label attr.for="{{form_elem.id}}"><b>{{form_elem.text}}</b></ion-label>
+        </ion-item>
+        <ion-item *ngSwitchCase="'textbox'">
+          <ion-input id="{{form_elem.id}}" type="{{form_elem.type}}" formControlName="{{form_elem.type}}"
+          placeholder="{{form_elem.text}}" (keyup)="onKeyup(form_elem)" (change)="onChange(form_elem)" required></ion-input>
+        </ion-item>
+        <ion-item *ngSwitchCase="'button'">
+          <ion-button type="{{form_elem.type}}" id="{{form_elem.id}}" [routerLink]="'/home/'+form_elem.navigate" (click)="onClick(form_elem)">{{form_elem.text}}</ion-button>
+        </ion-item>
+      </ion-item>  
+    </ion-item>
+    
+  </form>
+</ion-content>
